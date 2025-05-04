@@ -1,34 +1,10 @@
-import { Worker } from '@temporalio/worker';
-import { activities } from './activities';
-import dotenv from 'dotenv';
-import path from 'path';
+import { monitorRouteAndNotifyCustomer } from './activities';
 
-// Load environment variables
-dotenv.config();
-
-/**
- * Start the Temporal Worker
- */
-async function run() {
-  try {
-    // Initialize the Worker
-    const worker = await Worker.create({
-      workflowsPath: path.join(__dirname, 'workflows.js'),
-      activities,
-      taskQueue: 'traffic-monitor-queue',
-    });
-
-    // Start listening for tasks
-    await worker.run();
-    console.log('Temporal Worker started successfully');
-  } catch (error) {
-    console.error('Error starting worker:', error);
-    process.exit(1);
-  }
+async function main() {
+  console.log('🚦 Starting traffic monitor workflow...');
+  await monitorRouteAndNotifyCustomer();
 }
 
-// Run the worker
-run().catch((err) => {
-  console.error('Worker error:', err);
-  process.exit(1);
+main().catch((err) => {
+  console.error('❌ Workflow failed:', err);
 });
