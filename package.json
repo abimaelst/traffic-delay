@@ -3,7 +3,8 @@
   "private": true,
   "workspaces": [
     "apps/*",
-    "packages/*"
+    "packages/*",
+    "apps/temporal-worker"
   ],
   "version": "1.0.0",
   "description": "",
