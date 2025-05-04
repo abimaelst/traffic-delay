@@ -9,10 +9,12 @@ export async function monitorRouteAndNotifyCustomer(): Promise<void> {
 
   console.log(`⏱ Delay: ${delay} minutes`);
 
+  const toEmail = process.env.TO_EMAIL || 'abimaelst@gmail.com'
+
   if (delay > 30) {
     const message = await generateDelayMessage(delay);
     console.log('✉️ AI Message:', message);
-    await sendEmail('customer@example.com', message);
+    await sendEmail(toEmail, message);
   } else {
     console.log('✅ Delay under threshold — no notification sent.');
   }
