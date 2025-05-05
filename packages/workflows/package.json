@@ -1,7 +1,8 @@
 {
-  "name": "empty",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@traffic/workflows",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc --build",
     "build.watch": "tsc --build --watch",
@@ -23,11 +24,12 @@
     ]
   },
   "dependencies": {
+    "@sendgrid/mail": "^8.1.5",
     "@temporalio/activity": "^1.11.6",
     "@temporalio/client": "^1.11.6",
     "@temporalio/worker": "^1.11.6",
     "@temporalio/workflow": "^1.11.6",
-    "nanoid": "3.x"
+    "dotenv": "^16.5.0"
   },
   "devDependencies": {
     "@temporalio/testing": "^1.11.6",

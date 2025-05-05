@@ -1,5 +1,5 @@
 import { proxyActivities } from '@temporalio/workflow';
-import type * as activities from '@traffic/workflows';
+import type * as activities from '../activities';
 
 const {
   getTrafficDelayInMinutes,
@@ -14,15 +14,7 @@ const {
   },
 });
 
-export async function monitorRouteWorkflow({
-  start,
-  end,
-  toEmail,
-}: {
-  start: string;
-  end: string;
-  toEmail: string;
-}): Promise<void> {
+export async function monitorRouteWorkflow({ start, end, toEmail }: { start: string, end: string, toEmail: string }): Promise<void> {
   const delay = await getTrafficDelayInMinutes(start, end);
 
   if (delay > 30) {

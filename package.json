@@ -3,17 +3,42 @@
   "private": true,
   "workspaces": [
     "apps/*",
-    "packages/*",
-    "apps/temporal-worker"
+    "packages/*"
   ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@traffic/types": [
+        "packages/types/src"
+      ],
+      "@traffic/workflows": [
+        "packages/workflows/src"
+      ]
+    }
+  },
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:workflows": "npm --prefix packages/workflows run build",
+    "build:worker": "npm --prefix apps/temporal-worker run build",
+    "build:backend": "npm --prefix apps/backend run build",
+    "build": "npm run build:workflows && npm run build:worker && npm run build:backend",
+    "dev:workflows": "npm --prefix packages/workflows run build -- --watch",
+    "dev:worker": "npm --prefix apps/temporal-worker run start",
+    "dev:backend": "npm --prefix apps/backend run dev",
+    "dev:frontend": "npm --prefix apps/frontend run dev",
+    "dev": "dotenv -e .env concurrently -k -n wf,worker,api,web -c cyan,magenta,yellow,blue \"npm run dev:workflows\" \"npm run dev:worker\" \"npm run dev:backend\" \"npm run dev:frontend\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs"
+  "type": "commonjs",
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "dotenv-cli": "^8.0.0"
+  },
+  "dependencies": {
+    "add": "^2.0.6"
+  }
 }
