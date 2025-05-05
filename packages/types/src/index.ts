@@ -1,3 +1,21 @@
+export interface MonitorRouteInput {
+  start: string;
+  end: string;
+  toEmail: string;
+}
+
+export interface GetTrafficEmailRequest {
+  start: string;
+  end: string;
+  email: string;
+}
+
+export interface APIResponse {
+  message: string;
+  error?: string;
+}
+
+
 export interface Route {
   origin: string;
   destination: string;

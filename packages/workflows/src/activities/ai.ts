@@ -25,5 +25,8 @@ export async function generateDelayMessage(delayInMinutes: number): Promise<stri
     }
   );
 
-  return response.data.choices[0]?.message?.content?.trim() ?? '[Default fallback message]';
+  const message = response.data.choices[0]?.message?.content?.trim() ?? '[Default fallback message]'
+
+  console.log(`🤖 AI Message: ${message}`);
+  return message;
 }

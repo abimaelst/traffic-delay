@@ -27,7 +27,10 @@ export async function getTrafficDelayInMinutes(start: string, end: string): Prom
       throw new Error('Invalid duration returned from Mapbox');
     }
 
-    return Math.round(durationSeconds / 60);
+    const delay = Math.round(durationSeconds / 60)
+    console.log(`⏱ Delay: ${delay} minutes`);
+
+    return delay;
 
   } catch (error: any) {
     let status = axios.isAxiosError(error) ? error.response?.status : undefined;

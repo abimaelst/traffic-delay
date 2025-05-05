@@ -23,4 +23,6 @@ export async function monitorRouteWorkflow(params: MonitorRouteInput): Promise<v
     const message = await generateDelayMessage(delay);
     await sendEmail(toEmail, message);
   }
+
+  console.log('✅ Delay under threshold — no notification sent.');
 }
