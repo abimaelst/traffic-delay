@@ -12,7 +12,7 @@
     "start": "ts-node src/worker.ts",
     "start.watch": "nodemon src/worker.ts",
     "workflow": "ts-node src/client.ts",
-    "test": "mocha --exit --require ts-node/register --require source-map-support/register src/mocha/*.test.ts"
+    "test": "mocha --exit --require ts-node/register --require source-map-support/register src/__tests__/*.test.ts"
   },
   "nodemonConfig": {
     "execMap": {
@@ -29,20 +29,22 @@
     "@temporalio/client": "^1.11.6",
     "@temporalio/worker": "^1.11.6",
     "@temporalio/workflow": "^1.11.6",
-    "dotenv": "^16.5.0"
+    "dotenv": "^16.5.0",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
+    "@temporalio/testing": "^1.11.7",
     "@traffic/types": "file:../../packages/types",
-    "@temporalio/testing": "^1.11.6",
     "@tsconfig/node18": "^18.2.4",
-    "@types/mocha": "8.x",
+    "@types/mocha": "^8.2.3",
     "@types/node": "^22.9.1",
     "@typescript-eslint/eslint-plugin": "^8.18.0",
     "@typescript-eslint/parser": "^8.18.0",
+    "assert": "^2.1.0",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-deprecation": "^3.0.0",
-    "mocha": "8.x",
+    "mocha": "^8.4.0",
     "nodemon": "^3.1.7",
     "prettier": "^3.4.2",
     "ts-node": "^10.9.2",
