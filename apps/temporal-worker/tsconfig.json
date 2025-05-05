@@ -4,13 +4,13 @@
     "module": "commonjs",
     "strict": true,
     "esModuleInterop": true,
-    "outDir": "dist",
     "rootDir": "src",
+    "outDir": "dist",
     "types": [
       "node"
     ]
   },
   "include": [
-    "src"
+    "src/**/*"
   ]
 }
